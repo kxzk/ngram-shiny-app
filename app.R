@@ -24,7 +24,8 @@ ui <- fluidPage(theme = shinytheme("simplex"),
       sliderInput('ngramCount', '# of Grams', min = 1, max = 6, value = 1),
       hr(),
       p('Having trouble?'),
-      p('Email: kade.killary@xmedia.com')
+      p('email: kade.killary@xmedia.com'),
+      p(a(href='https://github.com/beigebrucewayne/NgramShinyApp/issues', 'file an issue'))
     ),
     # Main panel for displaying outputs
     mainPanel(
