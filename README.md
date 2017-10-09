@@ -16,7 +16,7 @@
 &nbsp;
 - Make sure numeric columns are formatted as numbers
   - exact to two decimal points
-  - include no comma separators  
+  - no comma separators  
 &nbsp;
 - Your CSV has these columns
   - Clicks
