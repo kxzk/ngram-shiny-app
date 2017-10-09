@@ -34,15 +34,21 @@ To run locally, clone the repo.
 git clone https://github.com/beigebrucewayne/NgramShinyApp.git
 ```
 
-Then, make sure you have R installed. The easiest way, if you have a Mac, is to use homebrew. Alternatively, you can always download from [CRAN](https://cran.r-project.org/).
+Then, make sure you have R installed. The easiest way, if you have a Mac, is to use [homebrew](https://brew.sh/). Alternatively, you can always download from [CRAN](https://cran.r-project.org/).
 ```bash
 brew tap homebrew/science
 brew install Caskroom/cask/xquartz
 brew install r
 ```
 
-Finally, start R in the project directory and invoke the Shiny library.
+Finally, start R, by typing R in the terminal, in the project directory and invoke the Shiny library. You'll also need to install all of the libraries.
 ```r
+install.packages('shiny')
+install.packages('tidytext')
+install.packages('shinythemes')
+install.packages('tidyverse')
+install.packages('dt')
+
 library(shiny)
 shiny::runApp()
 ```
