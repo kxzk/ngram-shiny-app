@@ -4,7 +4,7 @@
 ![preview](https://i.imgur.com/1gCVfoW.jpg)
 
 ---
-### Data Cleaning
+### Data Cleaning  
 
 - Export Search Terms Report as CSV from AdWords  
 &nbsp;  
@@ -21,12 +21,14 @@
 - Your CSV has these columns
   - Clicks
   - Cost
+  - Ctr
   - Conversions
   - Impressions
   - Avg. CPC
 
 ---
-### Get Up & Running
+### Get Up & Running  
+
 To run locally, clone the repo.
 ```bash
 git clone https://github.com/beigebrucewayne/NgramShinyApp.git
