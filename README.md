@@ -41,7 +41,7 @@ brew install Caskroom/cask/xquartz
 brew install r
 ```
 
-Finally, start R, by typing R in the terminal, in the project directory and invoke the Shiny library. You'll also need to install all of the libraries.
+Finally, start R in the project directory and invoke the Shiny library. You'll also need to install all of the libraries.
 ```r
 install.packages('shiny')
 install.packages('tidytext')
