@@ -1,7 +1,7 @@
 # Ngram AdWords Analysis
 ### A Shiny app built for analyzing the Search Terms report from AdWords.
 
-![preview](https://i.imgur.com/1gCVfoW.jpg)
+![preview](https://i.imgur.com/s6vd7JO.jpg)
 
 ---
 ### Data Cleaning  
