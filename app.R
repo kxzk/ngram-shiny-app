@@ -3,6 +3,7 @@ library(tidytext)
 library(shinythemes)
 library(tidyverse)
 library(DT)
+library(wordcloud)
 
 ui <- fluidPage(theme = shinytheme("simplex"),
 
@@ -21,7 +22,17 @@ ui <- fluidPage(theme = shinytheme("simplex"),
                          "text/comma-separated-values,text/plain",
                          ".csv")),
       hr(),
+      h4('N-gram Data Table'),
+      p('This will change the number of grams the data table shows.'),
+      br(),
       sliderInput('ngramCount', '# of Grams', min = 1, max = 6, value = 1),
+      hr(),
+      h4('N-gram Wordcloud'),
+      p('This will change the max words shown for the word cloud.'),
+      br(),
+      sliderInput('cloudCount', '# of Words', min = 50, max = 400, value = 100),
+      hr(),
+      plotOutput("wordcloud"),
       hr(),
       p('Having trouble?'),
       p('email: kade.killary@xmedia.com'),
@@ -44,6 +55,19 @@ ui <- fluidPage(theme = shinytheme("simplex"),
 )
 
 server <- function(input, output) {
+
+  output$wordcloud  <- renderPlot({
+    req(input$file1)
+    df  <- read_csv(input$file1$datapath)
+    names(df) %<>%
+      tolower() %>%
+      stringr::str_replace_all(" ","")
+    df %>%
+      dplyr::select(searchterm) %>%
+      tidytext::unnest_tokens(ngram, searchterm, token="ngrams", n=input$ngramCount) %>%
+      count(ngram) %>%
+      with(wordcloud(ngram, n, max.words=input$cloudCount, rot.per=.1, random.color=FALSE, random.order=TRUE, colors=c("#000000", "#FF1A1A")))
+  })
 
   output$contents <- DT::renderDataTable({
     # input$file1 will be NULL initially. After the user selects
