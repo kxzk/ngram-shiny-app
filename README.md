@@ -48,6 +48,7 @@ install.packages('tidytext')
 install.packages('shinythemes')
 install.packages('tidyverse')
 install.packages('dt')
+install.packages('wordcloud')
 
 library(shiny)
 shiny::runApp()
