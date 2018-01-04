@@ -8,6 +8,10 @@ library(wordcloud)
 ui <- fluidPage(theme = shinytheme("simplex"),
 
   titlePanel("AdWords N-gram Analysis"),
+  # custom css
+  tags$head(
+    tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
+  ),
   # Sidebar layout with input and output definitions
   sidebarLayout(
     # Sidebar panel for inputs
