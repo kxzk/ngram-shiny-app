@@ -8,10 +8,6 @@ library(wordcloud)
 ui <- fluidPage(theme = shinytheme("simplex"),
 
   titlePanel("AdWords N-gram Analysis"),
-  # custom css
-  tags$head(
-    tags$link(rel = "stylesheet", type = "text/css", href = "bootstrap.css")
-  ),
   # Sidebar layout with input and output definitions
   sidebarLayout(
     # Sidebar panel for inputs
@@ -34,17 +30,17 @@ ui <- fluidPage(theme = shinytheme("simplex"),
       h4('N-gram Wordcloud'),
       p('This will change the max words shown for the word cloud.'),
       br(),
-      sliderInput('cloudCount', '# of Words', min = 50, max = 400, value = 100),
+      sliderInput('cloudCount', '# of Words', min = 20, max = 400, value = 100),
       hr(),
       plotOutput("wordcloud"),
       hr(),
       p('Having trouble?'),
       p('email: kade.killary@xmedia.com'),
-      p(a(href='https://github.com/beigebrucewayne/NgramShinyApp/issues', 'file an issue'))
+      p(a(href='https://github.com/kadekillary/ngram-shiny-app/issues', 'file an issue'))
     ),
     # Main panel for displaying outputs
     mainPanel(
-      img(src='https://i.imgur.com/kB1qKI0.png', align = 'center'),
+      img(src='https://agencycompile.blob.core.windows.net/legacy/13996/logo_crossmedia_red1.png', align = 'center', style='width:200px'),
       br(),br(),
       h3('What\'s an N-gram?'),
       p('An n-gram is a contiguous sequence of n items from a given sequence of text or speech. You can read more', a(href='http://text-analytics101.rxnlp.com/2014/11/what-are-n-grams.html', 'here'), 'and', a(href='https://searchengineland.com/brainlabs-script-find-best-worst-search-queries-using-n-grams-228379', 'here.')),
@@ -70,7 +66,7 @@ server <- function(input, output) {
       dplyr::select(searchterm) %>%
       tidytext::unnest_tokens(ngram, searchterm, token="ngrams", n=input$ngramCount) %>%
       count(ngram) %>%
-      with(wordcloud(ngram, n, max.words=input$cloudCount, rot.per=.1, random.color=FALSE, random.order=TRUE, colors=c("#000000", "#FF1A1A")))
+      with(wordcloud(ngram, n, max.words=input$cloudCount, rot.per=.1, random.color=FALSE, random.order=FALSE, colors=c("#000000", "#FF1A1A")))
   })
 
   output$contents <- DT::renderDataTable({
@@ -86,6 +82,7 @@ server <- function(input, output) {
           dplyr::select(searchterm, impr., clicks, ctr, cost, conversions) %>%
           tidytext::unnest_tokens(ngram, searchterm, token="ngrams", n=input$ngramCount) %>%
           dplyr::group_by(ngram) %>%
+          dplyr::filter(!is.na(ngram)) %>%
           dplyr::summarize(
             sum.impr = round(sum(impr.), 2),
             avg.impr = round(mean(impr.), 2),
