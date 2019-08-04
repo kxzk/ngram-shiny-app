@@ -36,10 +36,8 @@ To run locally, clone the repo.
 git clone https://github.com/kadekillary/ngram-shiny-app.git
 ```
 
-Then, make sure you have R installed. The easiest way, if you have a Mac, is to use [homebrew](https://brew.sh/). Alternatively, you can always download from [CRAN](https://cran.r-project.org/).
+Then, make sure you have R installed. The easiest way, if you have a Mac, is to use [homebrew](https://brew.sh/).
 ```bash
-brew tap homebrew/science
-brew install Caskroom/cask/xquartz
 brew install r
 ```
 
