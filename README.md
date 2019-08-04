@@ -1,6 +1,8 @@
 # ngram shiny app
 ### A Shiny app built for analyzing the Search Terms report from AdWords.
 
+![](https://img.shields.io/github/license/mashape/apistatus.svg)
+
 ![preview](https://i.imgur.com/s6vd7JO.jpg)
 
 ---
@@ -31,7 +33,7 @@
 
 To run locally, clone the repo.
 ```bash
-git clone https://github.com/beigebrucewayne/NgramShinyApp.git
+git clone https://github.com/kadekillary/ngram-shiny-app.git
 ```
 
 Then, make sure you have R installed. The easiest way, if you have a Mac, is to use [homebrew](https://brew.sh/). Alternatively, you can always download from [CRAN](https://cran.r-project.org/).
